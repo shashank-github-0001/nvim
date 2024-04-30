@@ -196,4 +196,21 @@ require("lazy").setup({
 		icons = true,
 	},
 	---------------------------------------------------------------------
+	{
+		"nvim-tree/nvim-tree.lua",
+		opts = {
+			disable_netrw = true,
+			actions = {
+				open_file = {
+					quit_on_open = true,
+				},
+			},
+			view = {
+				width = 30,
+			},
+		},
+		-- config = function()
+		-- 	require("nvim-tree").setup({})
+		-- end,
+	},
 }, {})
