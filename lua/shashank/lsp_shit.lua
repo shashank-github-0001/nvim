@@ -12,7 +12,15 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities() or {})
 
 require("mason-lspconfig").setup({
-	ensure_installed = { "clangd", "lua_ls", "rust_analyzer", "pyright", "bashls", "asm_lsp", "marksman" },
+	ensure_installed = {
+		"clangd",
+		"lua_ls",
+		"rust_analyzer",
+		"pyright",
+		"bashls",
+		"asm_lsp",
+		"marksman",
+	},
 	handlers = {
 		function(servername)
 			require("lspconfig")[servername].setup({ capabilities = capabilities })
