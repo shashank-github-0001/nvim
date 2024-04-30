@@ -22,5 +22,13 @@ vim.keymap.set("n", "gR", function()
 	require("trouble").toggle("lsp_references")
 end)
 
+vim.keymap.set("n", "d]", function()
+	require("trouble").next({ skip_groups = true, jump = true })
+end)
+
+vim.keymap.set("n", "d[", function()
+	require("trouble").previous({ skip_groups = true, jump = true })
+end)
+
 vim.keymap.set("n", "<leader>rr", ":TroubleRefresh<CR>")
 vim.keymap.set("n", "<leader>tf", ":Trouble<CR>")
