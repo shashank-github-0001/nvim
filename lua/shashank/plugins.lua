@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
+require("lazy").setup({
 	---------------------------------------------------------------------
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -185,8 +185,14 @@ local plugins = {
 				},
 			},
 		},
-	}, ---------------------------------------------------------------------
-}
-
-local opts = {}
-require("lazy").setup(plugins, opts)
+	},
+	---------------------------------------------------------------------
+	"folke/trouble.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	opts = {
+		potision = "bottom",
+		height = 8,
+		icons = true,
+	},
+	---------------------------------------------------------------------
+}, {})
