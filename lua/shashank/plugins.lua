@@ -127,6 +127,7 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {},
 	},
+	{ "rose-pine/neovim", name = "rose-pine" },
 	---------------------------------------------------------------------
 	{
 		"folke/tokyonight.nvim",
