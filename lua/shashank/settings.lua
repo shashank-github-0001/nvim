@@ -33,3 +33,5 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
+vim.g.netrw_banner = ""
+vim.g.netrw_line_seperator = ""
