@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>al", "GVgg=G")
 vim.keymap.set("n", "<C-t>", ":tabnew<CR>")
 vim.keymap.set("n", "<C-n>", ":tabnext<CR>")
 vim.keymap.set("n", "<C-c>", ":close<CR>")
+vim.keymap.set("n", "<leader>dir", vim.cmd.Ex)
 
 --chad keybindings
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')

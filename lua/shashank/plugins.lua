@@ -1,14 +1,14 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
-end
+
+vim.fn.system({
+	"git",
+	"clone",
+	"--filter=blob:none",
+	"https://github.com/folke/lazy.nvim.git",
+	"--branch=stable",
+	lazypath,
+})
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -17,6 +17,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
+
 	---------------------------------------------------------------------
 	{
 		"nvim-telescope/telescope.nvim",
@@ -35,12 +36,14 @@ require("lazy").setup({
 			{ "nvim-tree/nvim-web-devicons", enabled = true },
 		},
 	},
+
 	---------------------------------------------------------------------
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
 		lazy = false,
 	},
+
 	---------------------------------------------------------------------
 	--auto format
 	{
@@ -71,15 +74,12 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				rust = { "rustfmt" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use a sub-list to tell conform to run *until* a formatter
-				-- is found.
+				python = { "isort", "black" },
 				-- javascript = { { "prettierd", "prettier" } },
 			},
 		},
 	},
+
 	---------------------------------------------------------------------
 	{
 		"neovim/nvim-lspconfig",
@@ -91,6 +91,7 @@ require("lazy").setup({
 			{ "folke/neodev.nvim", opts = {} },
 		},
 	},
+
 	---------------------------------------------------------------------
 	{
 		"L3MON4D3/LuaSnip",
@@ -109,24 +110,18 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		"saadparwaiz1/cmp_luasnip",
 	},
+
 	---------------------------------------------------------------------
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
+	-- {
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- },
+
 	---------------------------------------------------------------------
 	{
 		"ryanoasis/vim-devicons",
 	},
-	---------------------------------------------------------------------
-	{
-		"kylechui/nvim-surround",
-		version = "*",
-		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup()
-		end,
-	},
+
 	---------------------------------------------------------------------
 	--colorscheme
 	{
@@ -136,15 +131,10 @@ require("lazy").setup({
 		opts = {},
 	},
 	{ "rose-pine/neovim", name = "rose-pine" },
-	---------------------------------------------------------------------
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
+
 	---------------------------------------------------------------------
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
+
 	---------------------------------------------------------------------
 	{
 		"windwp/nvim-autopairs",
@@ -152,6 +142,7 @@ require("lazy").setup({
 		config = true,
 		opts = {},
 	},
+
 	---------------------------------------------------------------------
 	{
 		"folke/todo-comments.nvim",
@@ -159,6 +150,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+
 	---------------------------------------------------------------------
 	{
 		"vhyrro/luarocks.nvim",
@@ -173,29 +165,6 @@ require("lazy").setup({
 	},
 
 	---------------------------------------------------------------------
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-		cmd = "Neotree",
-		keys = {
-			{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
-		},
-		opts = {
-			filesystem = {
-				window = {
-					mappings = {
-						["\\"] = "close_window",
-					},
-				},
-			},
-		},
-	},
-	---------------------------------------------------------------------
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
@@ -203,22 +172,27 @@ require("lazy").setup({
 		height = 8,
 		icons = true,
 	},
+
 	---------------------------------------------------------------------
 	{
-		"nvim-tree/nvim-tree.lua",
-		opts = {
-			disable_netrw = true,
-			actions = {
-				open_file = {
-					quit_on_open = true,
-				},
-			},
-			view = {
-				width = 30,
-			},
-		},
-		-- config = function()
-		-- 	require("nvim-tree").setup({})
-		-- end,
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+		config = function()
+			-- Change '<C-g>' here to any keycode you like.
+			vim.keymap.set("i", "<C-a>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<C-j>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-k>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true, silent = true })
+		end,
 	},
+
+	---------------------------------------------------------------------
 }, {})

@@ -28,9 +28,6 @@ vim.keymap.set("n", "<leader>pwd", function()
 	builtin.grep_string({ search = word })
 end)
 
---going to the netrw
-vim.keymap.set("n", "<leader>dir", vim.cmd.Ex, { desc = "opening the netrw experience" })
-
 -- Slightly advanced example of overriding default behavior and theme
 vim.keymap.set("n", "<leader>/", function()
 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
