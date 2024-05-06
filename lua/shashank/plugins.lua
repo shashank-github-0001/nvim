@@ -74,8 +74,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				rust = { "rustfmt" },
-				python = { "isort", "black" },
-				-- javascript = { { "prettierd", "prettier" } },
+				cpp = { "clang-format" },
 			},
 		},
 	},
@@ -97,7 +96,7 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 		build = "make install_jsregexp",
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets", "bobrust/rust_snippets_for_luasnip" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
@@ -152,19 +151,6 @@ require("lazy").setup({
 	},
 
 	---------------------------------------------------------------------
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-	},
-	{
-		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim" },
-		version = "v7.0.0",
-		config = true,
-	},
-
-	---------------------------------------------------------------------
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
@@ -174,25 +160,15 @@ require("lazy").setup({
 	},
 
 	---------------------------------------------------------------------
+	--codeium
 	{
 		"Exafunction/codeium.vim",
 		event = "BufEnter",
-		config = function()
-			-- Change '<C-g>' here to any keycode you like.
-			vim.keymap.set("i", "<C-a>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<C-j>", function()
-				return vim.fn["codeium#CycleCompletions"](1)
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<c-k>", function()
-				return vim.fn["codeium#CycleCompletions"](-1)
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<c-x>", function()
-				return vim.fn["codeium#Clear"]()
-			end, { expr = true, silent = true })
-		end,
 	},
 
+	---------------------------------------------------------------------
+	--vimwiki
+
+	{ "vimwiki/vimwiki" },
 	---------------------------------------------------------------------
 }, {})

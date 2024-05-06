@@ -16,8 +16,8 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"lua_ls",
 		"rust_analyzer",
-		"pyright",
 		"bashls",
+		"marksman",
 	},
 	handlers = {
 		function(servername)
@@ -36,9 +36,16 @@ require("mason-lspconfig").setup({
 				},
 			})
 		end,
+
+		["rust_analyzer"] = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				filetypes = { "rust" },
+			})
+		end,
 	},
 })
-local lspconfig = require("lspconfig")
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -58,7 +65,7 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
@@ -156,9 +163,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- lspconfig.asm_lsp.setup({ capabilities = capabilities })
 -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 -- lspconfig.pyright.setup({ capabilities = capabilities })
-
-vim.lsp.handlers["textDocument/formatting"] = function(_, _, params)
-	if vim.api.nvim_buf_get_filetype() == "rust" then
-		return vim.lsp.buf.formatting_sync(nil, 0)
-	end
-end

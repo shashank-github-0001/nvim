@@ -31,4 +31,3 @@ vim.keymap.set("n", "g[", function()
 end)
 
 vim.keymap.set("n", "<leader>rr", ":TroubleRefresh<CR>")
-vim.keymap.set("n", "<leader>tf", ":Trouble<CR>")
