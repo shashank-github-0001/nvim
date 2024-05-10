@@ -15,14 +15,14 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"clangd",
 		"lua_ls",
-		"rust_analyzer",
+		-- "rust_analyzer",
 		"bashls",
 		"marksman",
 	},
 	handlers = {
-		function(servername)
-			require("lspconfig")[servername].setup({ capabilities = capabilities })
-		end,
+		-- function(servername)
+		-- 	require("lspconfig")[servername].setup({ capabilities = capabilities })
+		-- end,
 
 		["lua_ls"] = function()
 			local lspconfig = require("lspconfig")
@@ -37,18 +37,19 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
-		["rust_analyzer"] = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-				filetypes = { "rust" },
-			})
-		end,
+		-- ["rust_analyzer"] = function()
+		-- 	local lspconfig = require("lspconfig")
+		-- 	lspconfig.rust_analyzer.setup({
+		-- 		capabilities = capabilities,
+		-- 		filetypes = { "rust" },
+		-- 	})
+		-- end,
 	},
 })
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspconfig = require("lspconfig")
 
 cmp.setup({
 	snippet = {
@@ -156,10 +157,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- lspconfig.clangd.setup({ capabilities = capabilities })
--- lspconfig.lua_ls.setup({ capabilities = capabilities })
--- lspconfig.bashls.setup({ capabilities = capabilities })
--- lspconfig.marksman.setup({ capabilities = capabilities })
--- lspconfig.asm_lsp.setup({ capabilities = capabilities })
--- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
--- lspconfig.pyright.setup({ capabilities = capabilities })
+lspconfig.clangd.setup({ capabilities = capabilities })
+lspconfig.lua_ls.setup({ capabilities = capabilities })
+lspconfig.bashls.setup({ capabilities = capabilities })
+lspconfig.marksman.setup({ capabilities = capabilities })
+lspconfig.asm_lsp.setup({ capabilities = capabilities })
+lspconfig.pyright.setup({ capabilities = capabilities })
