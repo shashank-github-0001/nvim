@@ -170,13 +170,7 @@ require("lazy").setup({
 	--vimwiki
 
 	{ "vimwiki/vimwiki" },
+	{ "simrat39/rust-tools.nvim" },
 
-	---------------------------------------------------------------------
-	--rust shit
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
-		lazy = false, -- This plugin is already lazy
-	},
 	---------------------------------------------------------------------
 }, {})
