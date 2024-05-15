@@ -101,7 +101,6 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {},
 	},
-	{ "rose-pine/neovim", name = "rose-pine" },
 
 	---------------------------------------------------------------------
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
@@ -148,6 +147,25 @@ require("lazy").setup({
 		"stevearc/oil.nvim",
 		opts = {},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	---------------------------------------------------------------------
+	--indent line
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "User FilePost",
+		opts = {
+			indent = { char = "│", highlight = "IblChar" },
+			scope = { char = "│", highlight = "IblScopeChar" },
+		},
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "blankline")
+
+			local hooks = require("ibl.hooks")
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+			require("ibl").setup(opts)
+
+			dofile(vim.g.base46_cache .. "blankline")
+		end,
 	},
 	---------------------------------------------------------------------
 }, {})
