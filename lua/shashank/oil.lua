@@ -178,4 +178,4 @@ require("oil").setup({
 	},
 })
 
-vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "open parent file" })
+vim.keymap.set("n", "<leader>dir", "<cmd>Oil<CR>", { desc = "open parent file" })
