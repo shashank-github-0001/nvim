@@ -36,7 +36,8 @@ vim.opt.inccommand = "split"
 vim.g.netrw_banner = 0
 vim.g.netrw_browser_split = 0
 vim.g.netrw_winsize = 25
-vim.g.vimwiki = {
-	path = "~/wiki/",
-}
 vim.g.vikwiki_global_ext = 0
+vim.g.vimwiki_list = { {
+	syntax = "markdown",
+	ext = "md",
+} }
