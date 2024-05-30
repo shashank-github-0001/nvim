@@ -18,7 +18,6 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"marksman",
 		"pyright",
-		"gopls",
 	},
 	handlers = {
 		function(servername)

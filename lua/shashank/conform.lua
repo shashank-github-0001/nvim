@@ -3,7 +3,6 @@ require("conform").setup({
 		lua = { "stylua" },
 		rust = { "rustfmt" },
 		python = { "black", "isort" },
-		go = { "gofmt" },
 	},
 	notify_on_error = false,
 	format_on_save = {
