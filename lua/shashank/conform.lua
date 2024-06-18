@@ -2,7 +2,6 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		rust = { "rustfmt" },
-		python = { "black", "isort" },
 	},
 	notify_on_error = false,
 	format_on_save = {

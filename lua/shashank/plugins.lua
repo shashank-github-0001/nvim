@@ -33,7 +33,7 @@ require("lazy").setup({
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons", enabled = true },
+			{ "nvim-tree/nvim-web-devicons",            enabled = true },
 		},
 	},
 
@@ -58,8 +58,8 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
-			{ "folke/neodev.nvim", opts = {} },
+			{ "j-hui/fidget.nvim",       opts = {} },
+			{ "folke/neodev.nvim",       opts = {} },
 		},
 	},
 
@@ -94,13 +94,17 @@ require("lazy").setup({
 	},
 
 	---------------------------------------------------------------------
-	--colorscheme
+	--tokyonight
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 	},
+
+	---------------------------------------------------------------------
+	---rosepine
+	{ "rose-pine/nvim",  name = "rose-pine" },
 
 	---------------------------------------------------------------------
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
