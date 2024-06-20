@@ -19,6 +19,8 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"tsserver",
 		"html",
+		"tailwindcss",
+		"eslint",
 	},
 	handlers = {
 		function(servername)
