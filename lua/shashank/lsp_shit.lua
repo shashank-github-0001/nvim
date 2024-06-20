@@ -17,6 +17,8 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"marksman",
 		"rust_analyzer",
+		"tsserver",
+		"html",
 	},
 	handlers = {
 		function(servername)
