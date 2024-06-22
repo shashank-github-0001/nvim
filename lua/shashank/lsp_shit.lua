@@ -17,10 +17,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"marksman",
 		"rust_analyzer",
-		"tsserver",
-		"html",
-		"tailwindcss",
-		"eslint",
 	},
 	handlers = {
 		function(servername)
